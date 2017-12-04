@@ -1,0 +1,51 @@
+<h2>Feed/Dashboard page</h2>
+
+<div style="border: 1px solid #777777;padding: 6px;border-radius: 8px;">
+
+<%= render "form.html", Map.put(assigns, :action, post_path(@conn, :create)) %>
+</div>
+
+<style type="text/css">
+  #tagFilter  {
+    padding: 15px;
+    font-weight: bold;
+  }
+</style>
+
+
+<div id="tagFilter">
+  Showing only posts that mention the tag <span id="filterNameHere"></span>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Postid</th>
+      <th>Title</th>
+      <th>Content</th>
+      <th>User</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for post <- @posts do %>
+    <tr>
+      <td class="postid"><%= post.postid %></td>
+      <td  class="posttitle"><%= post.title %></td>
+      <td class = "content"><%= post.content %></td>
+      <td class="postuserid"><%= post.user_id %></td>
+
+      <td class="text-right">
+        <span><%= link "Show", to: post_path(@conn, :show, post), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Edit", to: post_path(@conn, :edit, post), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Delete", to: post_path(@conn, :delete, post), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= if @current_user do %>
+<span><%= link "New Post", to: post_path(@conn, :new) %></span>
+<% end %>

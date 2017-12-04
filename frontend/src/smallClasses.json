@@ -1,0 +1,229 @@
+{
+    "classMap":
+    {
+        "lafayette.edu/201740/WAIT/001_1967790890":
+        {
+            "lastUpdateTime": 1509308065074,
+            "name": "Interim Abroad Wait List",
+            "url": "https://bannerselfservice.lafayette.edu/pls/bprod/bwckctlg.p_disp_listcrse?term_in=201740&subj_in=WAIT&crse_in=001&schd_in=%",
+            "crns": ["40005"],
+            "honors": false,
+            "maxCredits": 1,
+            "minCredits": 1,
+            "desc": "",
+            "classId": "001",
+            "prettyUrl": "https://bannerselfservice.lafayette.edu/pls/bprod/bwckctlg.p_disp_course_detail?cat_term_in=201740&subj_code_in=WAIT&crse_numb_in=001",
+            "termId": "201740",
+            "host": "lafayette.edu",
+            "subject": "WAIT",
+            "classUid": "001_1967790890"
+        },
+        "lafayette.edu/201740/INDS/224_1154750373":
+        {
+            "lastUpdateTime": 1509308095867,
+            "name": "Culture & Landscape of Greece",
+            "url": "https://bannerselfservice.lafayette.edu/pls/bprod/bwckctlg.p_disp_listcrse?term_in=201740&subj_in=INDS&crse_in=224&schd_in=%",
+            "crns": ["40004"],
+            "honors": false,
+            "maxCredits": 1,
+            "minCredits": 1,
+            "desc": "Traveling around Greece to visit museums and important historical and archeological sites, students will see firsthand the diversity of the country's topography and have the opportunity to study artifacts that give us glimpses into Greece's distant and more modern past. This \"field experience\" will enhance students' ability to cast a critical eye on the ways writers of imaginative literature have represented institutions and customs, values and priorities of Greeks living in particular locales at particular historical moments, and will help foreground ways in which the natural environment of Greece has both been shaped by and helped to shape the country's ever-changing cultures. [H, GM2]",
+            "classId": "224",
+            "prettyUrl": "https://bannerselfservice.lafayette.edu/pls/bprod/bwckctlg.p_disp_course_detail?cat_term_in=201740&subj_code_in=INDS&crse_numb_in=224",
+            "termId": "201740",
+            "host": "lafayette.edu",
+            "subject": "INDS",
+            "classUid": "224_1154750373"
+        },
+        "lafayette.edu/201740/GERM/101_829001274":
+        {
+            "lastUpdateTime": 1509308066785,
+            "name": "Elementary German",
+            "url": "https://bannerselfservice.lafayette.edu/pls/bprod/bwckctlg.p_disp_listcrse?term_in=201740&subj_in=GERM&crse_in=101&schd_in=%",
+            "crns": ["40003"],
+            "honors": false,
+            "maxCredits": 1,
+            "minCredits": 1,
+            "desc": "Fundamentals of spoken and written language. Development of reading, writing, speaking, and listening skills. An introduction to the culture of Germany and German-speaking countries. Class/laboratory.",
+            "classId": "101",
+            "prettyUrl": "https://bannerselfservice.lafayette.edu/pls/bprod/bwckctlg.p_disp_course_detail?cat_term_in=201740&subj_code_in=GERM&crse_numb_in=101",
+            "termId": "201740",
+            "host": "lafayette.edu",
+            "subject": "GERM",
+            "classUid": "101_829001274"
+        },
+        "lafayette.edu/201740/GEOL/160_1894442012":
+        {
+            "lastUpdateTime": 1509308091536,
+            "name": "Geol Nat'l Parks:Western US",
+            "url": "https://bannerselfservice.lafayette.edu/pls/bprod/bwckctlg.p_disp_listcrse?term_in=201740&subj_in=GEOL&crse_in=160&schd_in=%",
+            "crns": ["40002", "40007"],
+            "honors": false,
+            "maxCredits": 1,
+            "minCredits": 1,
+            "desc": "Students develop an understanding of basic geological processes and how they shape the Earth by visiting different national parks in Colorado, Arizona, New Mexico, California, and Utah. Topics covered in an introductory geology course are learned in an experiential field experience instead of typical lecture-lab. For example, in the canyon lands (Grand, Bryce, and Zion) students examine the fossil record preserved in the rocks; in California, they study geological hazards (earthquakes, landslides, and volcanism) by field studies of the San Andreas Fault, mass-wasting in Pt Reyes National Seashore, and volcanism at Lassen volcano. [NS]",
+            "classId": "160",
+            "prettyUrl": "https://bannerselfservice.lafayette.edu/pls/bprod/bwckctlg.p_disp_course_detail?cat_term_in=201740&subj_code_in=GEOL&crse_numb_in=160",
+            "termId": "201740",
+            "host": "lafayette.edu",
+            "subject": "GEOL",
+            "classUid": "160_1894442012"
+        }
+    },
+    "sectionMap":
+    {
+        "lafayette.edu/201740/WAIT/001_1967790890/40005":
+        {
+            "seatsCapacity": 999,
+            "seatsRemaining": 996,
+            "waitCapacity": 0,
+            "waitRemaining": 0,
+            "url": "https://bannerselfservice.lafayette.edu/pls/bprod/bwckschd.p_disp_detail_sched?term_in=201740&crn_in=40005",
+            "crn": "40005",
+            "meetings": [
+            {
+                "startDate": 17672,
+                "endDate": 17711,
+                "profs": ["Kaitlyn Brown", "Rochelle A. Keesler"],
+                "where": "TBA",
+                "type": "Class",
+                "allProfs": ["Kaitlyn Brown", "Rochelle A. Keesler"]
+            }],
+            "lastUpdateTime": 1509308176106,
+            "termId": "201740",
+            "host": "lafayette.edu",
+            "subject": "WAIT",
+            "classId": "001",
+            "classUid": "001_1967790890"
+        },
+        "lafayette.edu/201740/INDS/224_1154750373/40004":
+        {
+            "seatsCapacity": 20,
+            "seatsRemaining": -3,
+            "waitCapacity": 0,
+            "waitRemaining": 0,
+            "url": "https://bannerselfservice.lafayette.edu/pls/bprod/bwckschd.p_disp_detail_sched?term_in=201740&crn_in=40004",
+            "crn": "40004",
+            "meetings": [
+            {
+                "startDate": 17672,
+                "endDate": 17711,
+                "profs": ["Deborah L. Byrd", "Elaine R. Reynolds"],
+                "where": "TBA",
+                "type": "Class",
+                "allProfs": ["Deborah L. Byrd", "Elaine R. Reynolds"]
+            }],
+            "lastUpdateTime": 1509308180857,
+            "termId": "201740",
+            "host": "lafayette.edu",
+            "subject": "INDS",
+            "classId": "224",
+            "classUid": "224_1154750373"
+        },
+        "lafayette.edu/201740/GERM/101_829001274/40003":
+        {
+            "seatsCapacity": 20,
+            "seatsRemaining": 16,
+            "waitCapacity": 0,
+            "waitRemaining": 0,
+            "url": "https://bannerselfservice.lafayette.edu/pls/bprod/bwckschd.p_disp_detail_sched?term_in=201740&crn_in=40003",
+            "crn": "40003",
+            "meetings": [
+            {
+                "startDate": 17672,
+                "endDate": 17711,
+                "profs": ["Margarete B. Lamb-Faffelberger"],
+                "where": "TBA",
+                "type": "Class",
+                "allProfs": ["Margarete B. Lamb-Faffelberger"]
+            }],
+            "lastUpdateTime": 1509308176205,
+            "termId": "201740",
+            "host": "lafayette.edu",
+            "subject": "GERM",
+            "classId": "101",
+            "classUid": "101_829001274"
+        },
+        "lafayette.edu/201740/GEOL/160_1894442012/40007":
+        {
+            "seatsCapacity": 4,
+            "seatsRemaining": 3,
+            "waitCapacity": 0,
+            "waitRemaining": 0,
+            "url": "https://bannerselfservice.lafayette.edu/pls/bprod/bwckschd.p_disp_detail_sched?term_in=201740&crn_in=40007",
+            "crn": "40007",
+            "meetings": [
+            {
+                "startDate": 17672,
+                "endDate": 17711,
+                "profs": ["Lawrence L. Malinconico", "David F. Sunderlin"],
+                "where": "TBA",
+                "type": "Class",
+                "allProfs": ["Lawrence L. Malinconico", "David F. Sunderlin"]
+            }],
+            "lastUpdateTime": 1509308177711,
+            "termId": "201740",
+            "host": "lafayette.edu",
+            "subject": "GEOL",
+            "classId": "160",
+            "classUid": "160_1894442012"
+        },
+        "lafayette.edu/201740/GEOL/160_1894442012/40002":
+        {
+            "seatsCapacity": 18,
+            "seatsRemaining": 7,
+            "waitCapacity": 0,
+            "waitRemaining": 0,
+            "url": "https://bannerselfservice.lafayette.edu/pls/bprod/bwckschd.p_disp_detail_sched?term_in=201740&crn_in=40002",
+            "crn": "40002",
+            "meetings": [
+            {
+                "startDate": 17672,
+                "endDate": 17711,
+                "profs": ["Lawrence L. Malinconico", "David F. Sunderlin"],
+                "where": "TBA",
+                "type": "Class",
+                "allProfs": ["Lawrence L. Malinconico", "David F. Sunderlin"]
+            }],
+            "lastUpdateTime": 1509308177524,
+            "termId": "201740",
+            "host": "lafayette.edu",
+            "subject": "GEOL",
+            "classId": "160",
+            "classUid": "160_1894442012"
+        }
+    },
+    "subjectMap":
+    {
+        "lafayette.edu/201740/WAIT":
+        {
+            "subject": "WAIT",
+            "text": "Wait List",
+            "termId": "201740",
+            "host": "lafayette.edu"
+        },
+        "lafayette.edu/201740/INDS":
+        {
+            "subject": "INDS",
+            "text": "Interdisciplinary",
+            "termId": "201740",
+            "host": "lafayette.edu"
+        },
+        "lafayette.edu/201740/GERM":
+        {
+            "subject": "GERM",
+            "text": "German",
+            "termId": "201740",
+            "host": "lafayette.edu"
+        },
+        "lafayette.edu/201740/GEOL":
+        {
+            "subject": "GEOL",
+            "text": "Geology",
+            "termId": "201740",
+            "host": "lafayette.edu"
+        }
+    },
+    "termId": "201740",
+    "host": "lafayette.edu"
+}

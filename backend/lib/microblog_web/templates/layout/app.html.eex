@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Hello Microblog!</title>
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+  </head>
+
+
+  <body>
+   <nav class="navbar navbar-dark bg-dark navbar-expand-md">
+      <a class="navbar-brand" href="#">Microblog</a>
+
+      <button class="navbar-toggler" type="button"
+              data-toggle="collapse" data-target="#main-navbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="main-navbar">
+        <ul class="navbar-nav mr-auto">
+            <%= if @current_user do %>
+          <li class="nav-item">
+        <%= link "Posts", to: post_path(@conn, :index), class: "nav-link" %>
+    </li>
+    <li class="nav-item">
+              <%= link "Users", to: user_path(@conn, :index), class: "nav-link" %>
+
+          </li>
+          <% end %>
+        </ul>
+      </div>
+
+      <%= if @current_user do %>
+        <span class="text-light">
+          <%= @current_user.email %> |
+          <%= link("logout", to: session_path(@conn, :logout), method: :delete) %>
+        </span>
+      <% else %>
+        <%= form_for @conn, session_path(@conn, :login), 
+              [as: "user", class: "form-inline w-75"], fn _f -> %>
+          <input type="text" placeholder="email" 
+                     class="form-control" name="email">
+           <input type="password" placeholder="password"
+                  class="form-control" name="password">
+          <input type="submit" value="Log in" class="btn btn-primary">
+        <% end %>
+      <% end %>
+   </nav>
+
+    <div class="container">
+
+      <div class="row">
+        <div class="col-sm-12 my-2">
+          <%= if get_flash(@conn, :info) do %> 
+            <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+          <% end %>
+          <%= if get_flash(@conn, :error) do %> 
+            <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-8">
+          <%= render @view_module, @view_template, assigns %>
+        </div>
+      </div>
+
+    </div> <!-- container -->
+
+    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+</body>
+</html>

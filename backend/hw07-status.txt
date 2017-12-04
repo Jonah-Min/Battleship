@@ -1,0 +1,82 @@
+CS4550 Web Dev, Fall 2017.
+
+HW06 status report form.
+
+Please answer the following questions and submit the 
+filled-in file to Bottlenose.
+
+
+1. What's your name?
+Ryan Hughes
+
+
+2. What's the link to your Github repo's releases page?
+
+https://github.com/ryanhugh/microblog/releases
+
+3. What's the link to your deployed Microblog app?
+
+microblog.courseboard.io
+
+
+4. Did you successfully deploy? If not, what doesn't work?
+Yes
+
+
+5. Did you successfully implement passwords securely? If not, 
+what doesn't work?
+Yes
+
+6. Did you successfully implement admin users? What paths are 
+admin-only? What paths
+   are accessible to all users.
+
+Nope. I did LetsEncrypt, Tags, Mentions, and Markdown for the 
+Additional Tasks section 5 pts each. (20pts total). 
+
+7. What changes did you make to clean up your application 
+layout and navigation?
+
+I cleaned up some of the bootstrap code and made it so when the 
+user goes the homepage and is not logged in it makes them log in. 
+
+
+8. Did you complete any catch up tasks? Which ones? Is there 
+anything still not working about those features?
+
+ Nope. All of the items mentioned in the Catch-Up tasks worked. 
+
+
+9. Did you complete any additional tasks? Which ones? For each, 
+describe how it should work and how that differs from your deployed 
+functionality.
+
+ I did LetsEncrypt, Tags, Mentions, and Markdown for the 
+ Additional Tasks section 5 pts each. (20pts total)
+
+
+LetsEncrypt:
+
+1. The entire site is https. It will redirect you to https 
+if you visit it in http. The certificate is issued with LE.
+2. Tags. When you make a post you can #tag something. This 
+will be highlighted when you view the list of posts. 
+You can click this tag to see just te posts with this tag.
+3. Mentions. When you make a post you can @mention someone. 
+This will be highlighted when you visit the list of posts. 
+You can click this to go to the user's page.
+4. Markdown. You can add markdown to the posts and it will 
+be formatted in the list of posts. 
+
+
+A. Did you complete any bonus addtional goals for extra credit? 
+For each, describe how
+   it should work and how that differs from your deployed 
+   functionality.
+
+Nope.
+
+B. Is there any other useful information that you want to provide for grading?
+
+
+Nope.

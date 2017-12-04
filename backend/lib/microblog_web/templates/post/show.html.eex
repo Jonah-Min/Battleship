@@ -1,0 +1,50 @@
+<%= if @current_user do %>
+  <script type="text/javascript">
+    window.currUserId = <%= @current_user.id %>;
+    window.currUserEmail = "<%= @current_user.email %>";
+  </script>
+<% end %>
+
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-sm-8 blog-main">
+
+      <div class="blog-header">
+        <h1 class="blog-title"><%= @post.title %></h1>
+        <p class="lead blog-description"><%= @post.content %></p>
+
+        <div id="like-bar">
+        <div id="post-likes"
+         data-path="<%= like_path(@conn, :index) %>"
+         data-post_id="<%= @post.id %>">
+      &nbsp;
+    </div>
+
+    <script id="likes-template" type="text/x-handlebars-template">
+      <div class="m-2">
+        <p>Likes:
+
+        {{#each data}}
+          {{user_email}},
+
+        {{else}}
+        No likes yet.
+        {{/each}}</p>
+      </div>
+    </script>
+
+    <%= if @current_user do %>
+    <div class="m-2">
+      <button id="like-add-button" class="btn btn-primary" data-user-id="<%= @current_user.id %>">Like!</button>
+      <button id="unlike-button" class="btn btn-primary" data-user-id="<%= @current_user.id %>">unlike!</button>
+    </div>
+    <% end %>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<p><span><%= link "Edit", to: post_path(@conn, :edit, @post), class: "btn btn-primary btn-xs" %></span></p>
+<p><span><%= link "Back", to: post_path(@conn, :index) %></span></p>
+

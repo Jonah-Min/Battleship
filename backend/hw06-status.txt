@@ -1,0 +1,119 @@
+CS4550 Web Dev, Fall 2017.
+
+HW06 status report form.
+
+Please answer the following questions and submit the filled-in file to Bottlenose.
+
+
+1. What's your name?
+
+Ryan Hughes
+
+
+2. What's the link to your Github repo's releases page?
+
+https://github.com/ryanhugh/microblog/releases
+
+
+3. What's the link to your deployed Microblog app?
+
+microblog.courseboard.io
+
+
+4. What's the link to the Travis CI build for the version of your app
+   that you made a release of? You can find this on Travis under "Build History".
+
+
+https://travis-ci.org/ryanhugh/microblog/builds
+
+5. Did you successfully deploy? If not, what doesn't work?
+
+
+yes. Everything works. A user is able to sign in and create a post. If another user is watching the posts list when a user creates a post, the post will be 
+automatically added to the top of the list. 
+
+6. Did you successfully implement live updates? If not, what doesn't work?
+
+Yes. Live updates work. I completed the Basic version for Realtime Updates and the advanced version for Travis ci
+
+7. Did Prof. Tuck give you any alternate / additional goals for this assignment?
+   If so, what were they and how well did you complete them with your submission?
+
+Nope. 
+
+8. Is there any other useful information that you want to provide for grading?
+
+Nope.
+
+
+
+NGINX CONFIG
+
+
+server {
+        listen 80;
+        listen [::]:80;
+
+        root /home/ubuntu/www/webdev/hw02/;
+        index index.html;
+
+        server_name hw02.courseboard.io;
+
+        location / {
+                autoindex on;
+        }
+}
+
+
+server {
+        listen 80;
+        listen [::]:80;
+        server_name microblog.courseboard.io;
+
+
+        location / {
+                proxy_pass http://127.0.0.1:4000;
+                proxy_http_version 1.1;
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection "upgrade";
+                proxy_set_header Host $host;
+        }
+}
+
+server {
+        listen 80;
+        listen [::]:80;
+
+        root /home/ubuntu/www/webdev/hw01/;
+        index index.html;
+
+        server_name hw01.courseboard.io;
+
+
+}
+
+
+server {
+        listen 80;
+        listen [::]:80;
+
+        root /home/ubuntu/www/webdev/default/;
+        index index.html;
+
+        server_name www.courseboard.io courseboard.io;
+}
+
+
+
+server {
+        listen 80;
+        listen [::]:80;
+
+        root /home/ubuntu/www/webdev/default/;
+        index index.html;
+
+        server_name courseboard.io;
+}
+
+
+
