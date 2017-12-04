@@ -22,6 +22,10 @@
   font-size: large;
 }
 
+.container {
+  width: 75%;
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
@@ -127,8 +131,9 @@ form.login-form {
   margin-bottom: 5px;
   border: 1px solid #333;
   width: 30%;
-  margin: 0 auto;
+  margin: 9px auto;
   float: none;
+  overflow: auto;
 }
 
 .blah {
@@ -141,7 +146,7 @@ form.login-form {
 
 .message {
   list-style: none;
-  width: 30%;
+  width: 90%;
   margin: 5px auto;
   padding: 7px;
   border: 1px solid #333;
@@ -159,42 +164,34 @@ form.login-form {
 }
 
 .battleship-container {
-  width: 600px;
-  height: 600px;
   position: relative;
-  margin: 0 auto;
+  margin: 10px auto;
   float: none;
-}
-
-.battleship-container:after {
-  content: "";
-  display: block;
-  padding-bottom: 100%;
-}
-
-table {
   width: 600px;
   height: 600px;
 }
 
-td {
-  table-layout: fixed;
-  height: 60px;
-  width: 60px;
-  border: 5px solid black;
-  border-collapse: collapse;
+.game-cell {
+  display: inline-block;
+  min-width: 60px;
+  min-height: 60px;
+  margin: -1px 1px -4px -1px;
+  border: 1px solid black;
+  box-sizing: border-box;
 }
 
-@media screen and (min-width: 1008px) {
+.game-cell:hover {
+  background-color: red;
+}
+
+@media screen and (min-width: 1200px) {
 
   .battleship-container {
     float: left;
-    margin: 0;
   }
 
   .message-container {
     float: right;
-    margin: 0;
   }
 
 }

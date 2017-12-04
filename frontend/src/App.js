@@ -266,128 +266,108 @@ class App extends Component {
 
         <div className='container'>
           <div className='battleship-container'>
-            <table className='game'>
-              <tr>
-                <td className='00'></td>
-                <td className='01'></td>
-                <td className='02'></td>
-                <td className='03'></td>
-                <td className='04'></td>
-                <td className='05'></td>
-                <td className='06'></td>
-                <td className='07'></td>
-                <td className='08'></td>
-                <td className='09'></td>
-              </tr>
-              <tr>
-                <td className='10'></td>
-                <td className='11'></td>
-                <td className='12'></td>
-                <td className='13'></td>
-                <td className='14'></td>
-                <td className='15'></td>
-                <td className='16'></td>
-                <td className='17'></td>
-                <td className='18'></td>
-                <td className='19'></td>
-              </tr>
-              <tr>
-                <td className='20'></td>
-                <td className='21'></td>
-                <td className='22'></td>
-                <td className='23'></td>
-                <td className='24'></td>
-                <td className='25'></td>
-                <td className='26'></td>
-                <td className='27'></td>
-                <td className='28'></td>
-                <td className='29'></td>
-              </tr>
-              <tr>
-                <td className='30'></td>
-                <td className='31'></td>
-                <td className='32'></td>
-                <td className='33'></td>
-                <td className='34'></td>
-                <td className='35'></td>
-                <td className='36'></td>
-                <td className='37'></td>
-                <td className='38'></td>
-                <td className='39'></td>
-              </tr>
-              <tr>
-                <td className='40'></td>
-                <td className='41'></td>
-                <td className='42'></td>
-                <td className='43'></td>
-                <td className='44'></td>
-                <td className='45'></td>
-                <td className='46'></td>
-                <td className='47'></td>
-                <td className='48'></td>
-                <td className='49'></td>
-              </tr>
-              <tr>
-                <td className='50'></td>
-                <td className='51'></td>
-                <td className='52'></td>
-                <td className='53'></td>
-                <td className='54'></td>
-                <td className='55'></td>
-                <td className='56'></td>
-                <td className='57'></td>
-                <td className='58'></td>
-                <td className='59'></td>
-              </tr>
-              <tr>
-                <td className='60'></td>
-                <td className='61'></td>
-                <td className='62'></td>
-                <td className='63'></td>
-                <td className='64'></td>
-                <td className='65'></td>
-                <td className='66'></td>
-                <td className='67'></td>
-                <td className='68'></td>
-                <td className='69'></td>
-              </tr>
-              <tr>
-                <td className='70'></td>
-                <td className='71'></td>
-                <td className='72'></td>
-                <td className='73'></td>
-                <td className='74'></td>
-                <td className='75'></td>
-                <td className='76'></td>
-                <td className='77'></td>
-                <td className='78'></td>
-                <td className='79'></td>
-              </tr>
-              <tr>
-                <td className='80'></td>
-                <td className='81'></td>
-                <td className='82'></td>
-                <td className='83'></td>
-                <td className='84'></td>
-                <td className='85'></td>
-                <td className='86'></td>
-                <td className='87'></td>
-                <td className='88'></td>
-                <td className='89'></td>
-              </tr>
-              <tr>
-                <td className='90'></td>
-                <td className='91'></td>
-                <td className='92'></td>
-                <td className='93'></td>
-                <td className='94'></td>
-                <td className='95'></td>
-                <td className='96'></td>
-                <td className='96'></td>
-                <td className='97'></td>
-                <td className='98'></td>
-              </tr>
-            </table>
+            <div className='game'>
+              <div className='game-cell 00'></div>
+              <div className='game-cell 01'></div>
+              <div className='game-cell 02'></div>
+              <div className='game-cell 03'></div>
+              <div className='game-cell 04'></div>
+              <div className='game-cell 05'></div>
+              <div className='game-cell 06'></div>
+              <div className='game-cell 07'></div>
+              <div className='game-cell 08'></div>
+              <div className='game-cell 09'></div>
+              <div className='game-cell 10'></div>
+              <div className='game-cell 11'></div>
+              <div className='game-cell 12'></div>
+              <div className='game-cell 13'></div>
+              <div className='game-cell 14'></div>
+              <div className='game-cell 15'></div>
+              <div className='game-cell 16'></div>
+              <div className='game-cell 17'></div>
+              <div className='game-cell 18'></div>
+              <div className='game-cell 19'></div>
+              <div className='game-cell 20'></div>
+              <div className='game-cell 21'></div>
+              <div className='game-cell 22'></div>
+              <div className='game-cell 23'></div>
+              <div className='game-cell 24'></div>
+              <div className='game-cell 25'></div>
+              <div className='game-cell 26'></div>
+              <div className='game-cell 27'></div>
+              <div className='game-cell 28'></div>
+              <div className='game-cell 29'></div>
+              <div className='game-cell 30'></div>
+              <div className='game-cell 31'></div>
+              <div className='game-cell 32'></div>
+              <div className='game-cell 33'></div>
+              <div className='game-cell 34'></div>
+              <div className='game-cell 35'></div>
+              <div className='game-cell 36'></div>
+              <div className='game-cell 37'></div>
+              <div className='game-cell 38'></div>
+              <div className='game-cell 39'></div>
+              <div className='game-cell 40'></div>
+              <div className='game-cell 41'></div>
+              <div className='game-cell 42'></div>
+              <div className='game-cell 43'></div>
+              <div className='game-cell 44'></div>
+              <div className='game-cell 45'></div>
+              <div className='game-cell 46'></div>
+              <div className='game-cell 47'></div>
+              <div className='game-cell 48'></div>
+              <div className='game-cell 49'></div>
+              <div className='game-cell 50'></div>
+              <div className='game-cell 51'></div>
+              <div className='game-cell 52'></div>
+              <div className='game-cell 53'></div>
+              <div className='game-cell 54'></div>
+              <div className='game-cell 55'></div>
+              <div className='game-cell 56'></div>
+              <div className='game-cell 57'></div>
+              <div className='game-cell 58'></div>
+              <div className='game-cell 59'></div>
+              <div className='game-cell 60'></div>
+              <div className='game-cell 61'></div>
+              <div className='game-cell 62'></div>
+              <div className='game-cell 63'></div>
+              <div className='game-cell 64'></div>
+              <div className='game-cell 65'></div>
+              <div className='game-cell 66'></div>
+              <div className='game-cell 67'></div>
+              <div className='game-cell 68'></div>
+              <div className='game-cell 69'></div>
+              <div className='game-cell 70'></div>
+              <div className='game-cell 71'></div>
+              <div className='game-cell 72'></div>
+              <div className='game-cell 73'></div>
+              <div className='game-cell 74'></div>
+              <div className='game-cell 75'></div>
+              <div className='game-cell 76'></div>
+              <div className='game-cell 77'></div>
+              <div className='game-cell 78'></div>
+              <div className='game-cell 79'></div>
+              <div className='game-cell 80'></div>
+              <div className='game-cell 81'></div>
+              <div className='game-cell 82'></div>
+              <div className='game-cell 83'></div>
+              <div className='game-cell 84'></div>
+              <div className='game-cell 85'></div>
+              <div className='game-cell 86'></div>
+              <div className='game-cell 87'></div>
+              <div className='game-cell 88'></div>
+              <div className='game-cell 89'></div>
+              <div className='game-cell 90'></div>
+              <div className='game-cell 91'></div>
+              <div className='game-cell 92'></div>
+              <div className='game-cell 93'></div>
+              <div className='game-cell 94'></div>
+              <div className='game-cell 95'></div>
+              <div className='game-cell 96'></div>
+              <div className='game-cell 96'></div>
+              <div className='game-cell 97'></div>
+              <div className='game-cell 98'></div>
+            </div>
           </div>
           <ul className = 'message-container'>
             { this.state.messages.map((message) => {

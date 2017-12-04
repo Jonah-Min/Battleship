@@ -37,7 +37,6 @@ class Register extends React.Component {
       form: true,
       body: {
         _utf8: '✓',
-        'user[name]': 'name+here',
         'user[password]': this.passwordInput.value,
         'user[email]': this.usernameInput.value,
         'user[username]': this.usernameInput.value
