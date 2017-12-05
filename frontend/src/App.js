@@ -66,15 +66,16 @@ class App extends Component {
   async getMessages() {
 
     let posts = await request({
-      url: '/api/v1/likes',
+      url: '/posts',
       method: 'GET'
     })
 
     const $ = cheerio.load(posts);
 
-    let postid = $('.postid')
-    let content = $('.content')
-    let users = $('.postuserid')
+    let postid = $('.likes')
+    let content = $('.post')
+    let users = $('.user')
+    let title = $('.title')
 
     let output = []
 
@@ -93,8 +94,6 @@ class App extends Component {
     })
   }
 
-  // Class key is a key to a class. This can be found by running Keys.create(aClass).getHash()
-  // a key looks like this: lafayette.edu/201740/WAIT/001_1967790890
   async submitMessage() {
     let text = this.messageBody.value;
     let userEmail = this.usernameBox;
@@ -104,11 +103,12 @@ class App extends Component {
       form: true,
       body: {
         _utf8: '✓',
-        'post[postid]': '4',
-        'post[content]': text,
-        'post[user_id]': userEmail
+        'post[likes]': 0,
+        'post[post]': 'hi',
+        'post[title]': 'blah',
+        'post[user]': 'blah'
       },
-      url: '/api/v1/likes'
+      url: '/posts'
     })
 
     this.channel.push("ping", {
@@ -118,23 +118,7 @@ class App extends Component {
     return this.getMessages();
   }
 
-  getMessageForm(aClass) {
-    return (
-      <div className='message-form'>
-        <FormControl
-          type='text'
-          placeholder='Chat!'
-          className='message-body'
-          ref={(message) => { this.messageBody = message }}
-        />
-        <Button className='send-message' onClick={ this.submitMessage.bind(this) }>Send</Button>
-      </div>
-      )
-  }
-
   render() {
-
-    let messageForm = this.getMessageForm();
 
     return (
       <div className='App'>
@@ -374,7 +358,15 @@ class App extends Component {
                 )
               })}
             </ul>
-            {messageForm}
+            <div className='message-form'>
+              <FormControl
+                type='text'
+                placeholder='Chat!'
+                className='message-body'
+                ref={(message) => { this.messageBody = message }}
+              />
+              <Button className='send-message' onClick={ this.submitMessage.bind(this) }>Send</Button>
+            </div>
           </div>
         </div>
           
