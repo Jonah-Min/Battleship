@@ -38,37 +38,6 @@
   vertical-align: middle;
 }
 
-.class-counter {
-  width: 100%;
-  margin: 10px auto;
-  font-size: 15px;
-}
-
-.class-title {
-  font-size: 45px;
-}
-
-.class-subject {
-  font-size: 25px;
-}
-
-.class-desc {
-  font-size: 17px;
-}
-
-.class-crns-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: inline-block;
-  vertical-align: middle;
-}
-
-.crn-title {
-  vertical-align: middle;
-  font-size: 15px;
-}
-
 .back-button {
   font-size: 17px; 
 }

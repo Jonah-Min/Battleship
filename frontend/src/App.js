@@ -50,9 +50,6 @@ class App extends Component {
 
     this.submitMessage = this.submitMessage.bind(this);
     this.handleClick = this.handleClick.bind(this);
-
-    this.getMessages();
-
   }
 
   handleClick(selected) {
@@ -60,62 +57,22 @@ class App extends Component {
   }
 
   receiveMessage(messageData) {
-    this.getMessages()
-  }
-
-  async getMessages() {
-
-    let posts = await request({
-      url: '/posts',
-      method: 'GET'
-    })
-
-    const $ = cheerio.load(posts);
-
-    let postid = $('.likes')
-    let content = $('.post')
-    let users = $('.user')
-    let title = $('.title')
-
-    let output = []
-
-    for (var i = 0; i < users.length; i++) {
-      output.push({
-        id: $(postid[i]).text(),
-        content: $(content[i]).text(),
-        userId: $(users[i]).text()
-      })
-    }
-
-    console.log('Fetched messages')
+    let currentMessages = this.state.messages;
+    currentMessages.push({
+      content: messageData.chatMessage
+    });
 
     this.setState({
-      messages: output
+      messages: currentMessages
     })
   }
 
   async submitMessage() {
     let text = this.messageBody.value;
-    let userEmail = this.usernameBox;
-    
-    await request({
-      method: 'POST',
-      form: true,
-      body: {
-        _utf8: '✓',
-        'post[likes]': 0,
-        'post[post]': 'hi',
-        'post[title]': 'blah',
-        'post[user]': 'blah'
-      },
-      url: '/posts'
-    })
 
     this.channel.push("ping", {
-      content: text
+      chatMessage: text
     });
-
-    return this.getMessages();
   }
 
   render() {
@@ -363,7 +320,8 @@ class App extends Component {
                 type='text'
                 placeholder='Chat!'
                 className='message-body'
-                ref={(message) => { this.messageBody = message }}
+                inputRef={(message) => { this.messageBody = message }}
+                defaultValue=''
               />
               <Button className='send-message' onClick={ this.submitMessage.bind(this) }>Send</Button>
             </div>
