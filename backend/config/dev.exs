@@ -7,7 +7,10 @@ use Mix.Config
 # watchers to your application. For example, we use it
 # with brunch.io to recompile .js and .css sources.
 config :microblog, MicroblogWeb.Endpoint,
-  http: [port: 4000],
+  http: [port: 4000, protocol_options: [
+    max_request_line_length: 8192, 
+    max_header_value_length: 8192
+  ]],
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
@@ -32,6 +35,7 @@ config :microblog, MicroblogWeb.Endpoint,
 
 # Watch static and templates for browser reloading.
 config :microblog, MicroblogWeb.Endpoint,
+  http: [protocol_options: [max_request_line_length: 8192, max_header_value_length: 8192]],
   live_reload: [
     patterns: [
       ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},

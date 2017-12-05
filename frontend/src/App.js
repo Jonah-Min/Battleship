@@ -39,7 +39,7 @@ class App extends Component {
     this.messageBody = null;
     
     // Set up a channel connection
-    this.socket = new Socket("wss://" + window.location.hostname + ":4000/socket")
+    this.socket = new Socket("wss://" + window.location.hostname + ":8000/socket")
     // this.socket = new Socket("/socket")
 
     this.socket.connect();
@@ -52,12 +52,15 @@ class App extends Component {
 
     this.channel.on('ping', this.receiveMessage.bind(this));
 
-    this.verifyLogin = this.verifyLogin.bind(this);
     this.submitMessage = this.submitMessage.bind(this);
-    this.onRegister = this.onRegister.bind(this);
-    this.backToHome = this.backToHome.bind(this);
+    this.handleClick = this.handleClick.bind(this);
 
     this.getMessages();
+
+  }
+
+  handleClick(selected) {
+    selected.currentTarget.style.backgroundColor = 'red';
   }
 
   receiveMessage(messageData) {
@@ -119,60 +122,6 @@ class App extends Component {
     return this.getMessages();
   }
 
-  async verifyLogin() {
-    // verify that information was input to the forms
-    if(!this.usernameBox.value || !this.passwordBox.value) {
-      alert('Please input a Username and Password!')
-    }
-
-    let resp = await request({
-      method: 'POST',
-      form: true,
-      body: {
-        password: this.passwordBox.value,
-        email: this.usernameBox.value
-      },
-      url: '/session'
-    })
-
-
-    if (resp.includes('Bad email/password')) {
-      this.setState({
-        isLoggedIn: false,
-        email: this.usernameBox.value
-      });
-      alert('Bad Username/Password!');
-    }
-    else {
-      this.setState({
-        isLoggedIn: true,
-        email: this.usernameBox.value
-      })
-    }
-  }
-
-  showClass(aClass) {
-    console.log(aClass);
-    this.setState({
-      showingClass: aClass
-    })
-  }
-
-  onRegister() {
-    this.setState({
-      showingRegister: true
-    })
-  }
-
-  getHomePage() {
-    return (
-      <span>
-        Battleship
-      </span>
-        
-        )
-  }
-
   getMessageForm(aClass) {
     return (
       <div className='message-form'>
@@ -187,66 +136,9 @@ class App extends Component {
       )
   }
 
-  getLogInOForm() {
-    return (
-
-          <form className='login-form'>
-            <FormControl
-              className='login-input'
-              type='text'
-              placeholder='Username'
-              inputRef={ (usernameBox) => { this.usernameBox = usernameBox; } }
-            />
-            <FormControl
-              className='login-input'
-              type='password'
-              placeholder='Password'
-              inputRef={ (passwordBox) => { this.passwordBox = passwordBox; } }
-            />
-            <ButtonToolbar>
-              <Button
-                bsStyle="primary"
-                className="register-submit"
-                onClick={ this.onRegister }> 
-                Register
-              </Button> 
-            </ButtonToolbar>
-            <ButtonToolbar>
-              <Button 
-                bsStyle="primary" 
-                className='login-submit'
-                onClick={this.verifyLogin}>
-                  Login!
-              </Button>
-            </ButtonToolbar>
-          </form>
-
-      )
-  }
-
-  backToHome() {
-    this.setState({
-      showingRegister: false
-    });
-  }
-
   render() {
 
-    if (this.state.showingRegister) {
-      return <Register back={this.backToHome}/>
-    }
-
-    let navBarRightSide = null;
-    let messageForm = null;
-
-    if (!this.state.isLoggedIn) {
-      navBarRightSide = this.getLogInOForm();
-      messageForm = <span class='blah'>Log In to Chat</span>
-    }
-    else {
-      navBarRightSide = <a href="#" className="navbar-brand" style={{float: "right"}}>Logged in as {this.state.email}</a>
-      messageForm = this.getMessageForm();
-    }
+    let messageForm = this.getMessageForm();
 
     return (
       <div className='App'>
@@ -257,7 +149,6 @@ class App extends Component {
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
-            {navBarRightSide}
           <Navbar.Collapse>
             <Nav />
             <Nav pullRight />
@@ -265,120 +156,230 @@ class App extends Component {
         </Navbar>
 
         <div className='container'>
-          <div className='battleship-container'>
-            <div className='game'>
-              <div className='game-cell 00'></div>
-              <div className='game-cell 01'></div>
-              <div className='game-cell 02'></div>
-              <div className='game-cell 03'></div>
-              <div className='game-cell 04'></div>
-              <div className='game-cell 05'></div>
-              <div className='game-cell 06'></div>
-              <div className='game-cell 07'></div>
-              <div className='game-cell 08'></div>
-              <div className='game-cell 09'></div>
-              <div className='game-cell 10'></div>
-              <div className='game-cell 11'></div>
-              <div className='game-cell 12'></div>
-              <div className='game-cell 13'></div>
-              <div className='game-cell 14'></div>
-              <div className='game-cell 15'></div>
-              <div className='game-cell 16'></div>
-              <div className='game-cell 17'></div>
-              <div className='game-cell 18'></div>
-              <div className='game-cell 19'></div>
-              <div className='game-cell 20'></div>
-              <div className='game-cell 21'></div>
-              <div className='game-cell 22'></div>
-              <div className='game-cell 23'></div>
-              <div className='game-cell 24'></div>
-              <div className='game-cell 25'></div>
-              <div className='game-cell 26'></div>
-              <div className='game-cell 27'></div>
-              <div className='game-cell 28'></div>
-              <div className='game-cell 29'></div>
-              <div className='game-cell 30'></div>
-              <div className='game-cell 31'></div>
-              <div className='game-cell 32'></div>
-              <div className='game-cell 33'></div>
-              <div className='game-cell 34'></div>
-              <div className='game-cell 35'></div>
-              <div className='game-cell 36'></div>
-              <div className='game-cell 37'></div>
-              <div className='game-cell 38'></div>
-              <div className='game-cell 39'></div>
-              <div className='game-cell 40'></div>
-              <div className='game-cell 41'></div>
-              <div className='game-cell 42'></div>
-              <div className='game-cell 43'></div>
-              <div className='game-cell 44'></div>
-              <div className='game-cell 45'></div>
-              <div className='game-cell 46'></div>
-              <div className='game-cell 47'></div>
-              <div className='game-cell 48'></div>
-              <div className='game-cell 49'></div>
-              <div className='game-cell 50'></div>
-              <div className='game-cell 51'></div>
-              <div className='game-cell 52'></div>
-              <div className='game-cell 53'></div>
-              <div className='game-cell 54'></div>
-              <div className='game-cell 55'></div>
-              <div className='game-cell 56'></div>
-              <div className='game-cell 57'></div>
-              <div className='game-cell 58'></div>
-              <div className='game-cell 59'></div>
-              <div className='game-cell 60'></div>
-              <div className='game-cell 61'></div>
-              <div className='game-cell 62'></div>
-              <div className='game-cell 63'></div>
-              <div className='game-cell 64'></div>
-              <div className='game-cell 65'></div>
-              <div className='game-cell 66'></div>
-              <div className='game-cell 67'></div>
-              <div className='game-cell 68'></div>
-              <div className='game-cell 69'></div>
-              <div className='game-cell 70'></div>
-              <div className='game-cell 71'></div>
-              <div className='game-cell 72'></div>
-              <div className='game-cell 73'></div>
-              <div className='game-cell 74'></div>
-              <div className='game-cell 75'></div>
-              <div className='game-cell 76'></div>
-              <div className='game-cell 77'></div>
-              <div className='game-cell 78'></div>
-              <div className='game-cell 79'></div>
-              <div className='game-cell 80'></div>
-              <div className='game-cell 81'></div>
-              <div className='game-cell 82'></div>
-              <div className='game-cell 83'></div>
-              <div className='game-cell 84'></div>
-              <div className='game-cell 85'></div>
-              <div className='game-cell 86'></div>
-              <div className='game-cell 87'></div>
-              <div className='game-cell 88'></div>
-              <div className='game-cell 89'></div>
-              <div className='game-cell 90'></div>
-              <div className='game-cell 91'></div>
-              <div className='game-cell 92'></div>
-              <div className='game-cell 93'></div>
-              <div className='game-cell 94'></div>
-              <div className='game-cell 95'></div>
-              <div className='game-cell 96'></div>
-              <div className='game-cell 96'></div>
-              <div className='game-cell 97'></div>
-              <div className='game-cell 98'></div>
+          <div className='game-container'>
+            <div className='battleship-container'>
+              <span className='game-header'>Your Board</span>
+              <div className='user-game'>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 00'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 01'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 02'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 03'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 04'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 05'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 06'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 07'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 08'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 09'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 10'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 11'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 12'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 13'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 14'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 15'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 16'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 17'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 18'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 19'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 20'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 21'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 22'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 23'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 24'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 25'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 26'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 27'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 28'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 29'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 30'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 31'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 32'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 33'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 34'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 35'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 36'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 37'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 38'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 39'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 40'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 41'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 42'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 43'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 44'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 45'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 46'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 47'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 48'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 49'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 50'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 51'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 52'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 53'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 54'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 55'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 56'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 57'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 58'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 59'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 60'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 61'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 62'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 63'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 64'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 65'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 66'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 67'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 68'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 69'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 70'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 71'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 72'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 73'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 74'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 75'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 76'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 77'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 78'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 79'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 80'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 81'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 82'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 83'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 84'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 85'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 86'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 87'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 88'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 89'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 90'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 91'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 92'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 93'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 94'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 95'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 96'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 96'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 97'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 98'></div>
+              </div>
+            </div>
+            <div className='battleship-container'>
+              <span className='game-header'>Your Guesses</span> 
+              <div className='opponent-game'>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 00'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 01'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 02'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 03'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 04'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 05'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 06'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 07'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 08'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 09'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 10'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 11'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 12'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 13'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 14'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 15'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 16'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 17'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 18'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 19'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 20'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 21'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 22'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 23'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 24'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 25'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 26'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 27'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 28'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 29'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 30'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 31'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 32'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 33'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 34'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 35'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 36'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 37'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 38'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 39'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 40'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 41'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 42'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 43'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 44'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 45'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 46'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 47'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 48'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 49'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 50'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 51'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 52'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 53'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 54'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 55'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 56'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 57'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 58'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 59'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 60'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 61'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 62'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 63'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 64'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 65'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 66'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 67'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 68'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 69'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 70'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 71'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 72'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 73'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 74'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 75'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 76'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 77'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 78'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 79'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 80'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 81'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 82'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 83'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 84'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 85'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 86'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 87'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 88'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 89'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 90'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 91'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 92'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 93'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 94'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 95'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 96'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 96'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 97'></div>
+                <div onClick={this.handleClick.bind(this)} className='game-cell 98'></div>
+              </div>
             </div>
           </div>
-          <ul className = 'message-container'>
-            { this.state.messages.map((message) => {
-              return(  
-                <li className='message'>
-                  { message.content }
-                </li>
-              )
-            })}
-          </ul>
-          {messageForm}
+          <div className='chat-container'>
+            <ul className = 'message-container'>
+              { this.state.messages.map((message) => {
+                return(  
+                  <li className='message'>
+                    { message.content }
+                  </li>
+                )
+              })}
+            </ul>
+            {messageForm}
+          </div>
         </div>
           
       </div>
