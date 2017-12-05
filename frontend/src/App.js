@@ -3,12 +3,8 @@ import elasticlunr from 'elasticlunr';
 import { Button, ButtonToolbar, Navbar, Nav, FormControl, Panel } from 'react-bootstrap';
 import cheerio from 'cheerio'
 
-import termDump from './classes.json';
-import searchIndex from './searchIndex.json';
-
 import request from './request';
 import Keys from './Keys';
-import Register from './Register';
 
 import './bootstrap.css';
 import './bootstrap-theme.css';
@@ -39,7 +35,7 @@ class App extends Component {
     this.messageBody = null;
     
     // Set up a channel connection
-    this.socket = new Socket("wss://" + window.location.hostname + ":8000/socket")
+    this.socket = new Socket("ws://" + window.location.hostname + "/socket")
     // this.socket = new Socket("/socket")
 
     this.socket.connect();
@@ -70,7 +66,7 @@ class App extends Component {
   async getMessages() {
 
     let posts = await request({
-      url: '/posts',
+      url: '/api/v1/likes',
       method: 'GET'
     })
 
@@ -112,7 +108,7 @@ class App extends Component {
         'post[content]': text,
         'post[user_id]': userEmail
       },
-      url: '/posts'
+      url: '/api/v1/likes'
     })
 
     this.channel.push("ping", {
